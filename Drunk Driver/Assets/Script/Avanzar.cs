@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarBot : MonoBehaviour
+public class Avanzar : MonoBehaviour
 {
     public float speed;
     public Vector3 direction;
 
-
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(direction * Time.deltaTime * speed);
+        transform.Translate(direction * Time.deltaTime * speed);
     }
-
 }

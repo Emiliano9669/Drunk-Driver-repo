@@ -2,32 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player2 : MonoBehaviour
 {
-
     private Rigidbody2D rb;
     public float accelerationPower;
     public float steeringPower;
     private float steeringAmount, speed, direction;
 
+    public float fuerza;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         steeringAmount = 0;
+        direction = 1;
+        
     }
 
 
 
     private void FixedUpdate()
     {
-       steeringAmount = TouchSteering(); // - Input.GetAxis("Horizontal")
-       speed = 1  * accelerationPower; //esto tendria que ser siempre 1  # Input.GetAxis("Vertical") #
-       direction = Mathf.Sign(Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.up))); //esto tendria que ser siempre 1
-
+        steeringAmount = TouchSteering(); // - Input.GetAxis("Horizontal")      
         rbRotation_Handled();
-        //rb.rotation += steeringAmount * steeringPower  * direction; // * rb.velocity.magnitude
-
+        MagicMovement_Handled();
         rb.AddRelativeForce(Vector2.up * speed);
         rb.AddRelativeForce(-Vector2.right * rb.velocity.magnitude * steeringAmount / 2);
     }
@@ -44,9 +42,9 @@ public class Player : MonoBehaviour
             steeringAmount -= 0.1f;
         }
 
-        if (steeringAmount > 1)
+        if (steeringAmount >= 1)
             steeringAmount = 1;
-        else if (steeringAmount < -1)
+        else if (steeringAmount <= -1)
             steeringAmount = -1;
         return steeringAmount;
     }
@@ -55,7 +53,7 @@ public class Player : MonoBehaviour
     {
         if (rb.rotation <= 20 && rb.rotation >= -20)
         {
-            rb.rotation += steeringAmount * steeringPower * rb.velocity.magnitude * direction;  // aca podemos poner el limite determinado para doblar (ejemplo: de -20 a 20)
+            rb.rotation += steeringAmount * steeringPower * direction;  // aca podemos poner el limite determinado para doblar (ejemplo: de -20 a 20)
         }
         else
         {
@@ -66,10 +64,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void MagicMovement_Handled()
+    {
+        float angulo = AngleFormatted(transform.rotation.eulerAngles.z);
+        rb.AddForce(Vector2.left * Time.deltaTime * angulo * fuerza);
+    }
+
+
+
+
+    public float AngleFormatted(float angle)
+    {
+        angle = (angle > 180) ? angle - 360 : angle;
+        return angle;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         string nameObject = collision.transform.tag;
-        if (nameObject == "CarBot"  || nameObject == "Border")
+        if (nameObject == "CarBot" || nameObject == "Border")
         {
             GameOver();
         }
@@ -79,8 +92,4 @@ public class Player : MonoBehaviour
     {
 
     }
-
- 
-
-
 }
