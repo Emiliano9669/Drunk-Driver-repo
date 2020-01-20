@@ -20,4 +20,9 @@ public class TimeManager : MonoBehaviour
         globalSceneTime += Time.deltaTime;
         text.text = globalSceneTime.ToString("0");          
     }
+
+    public static void ResetearTiempo()
+    {
+        globalSceneTime = 0;
+    }
 }

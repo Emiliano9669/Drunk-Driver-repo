@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StreetManager : MonoBehaviour
-{
-
-    public GameObject street;
+{   
+    [System.Serializable]
+    public struct StreetOfLevels
+    {
+        public GameObject[] road; // tiene que ser del mismo estilo!!! (importante)
+    }
+    
+    public StreetOfLevels[] streetsOnLevels;
     public Vector3 whereToSpawn;
 
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        int actualLevel = ControladorJuego.level;
         if (other.gameObject.tag == "Street")
         {
-            Instantiate(street, whereToSpawn, street.transform.rotation);
+            int randomNumber = Random.Range(0 ,streetsOnLevels[actualLevel].road.Length);
+            GameObject calle = streetsOnLevels[actualLevel].road[randomNumber];
+            Instantiate(calle, whereToSpawn, calle.transform.rotation);
         }
     }
 }
