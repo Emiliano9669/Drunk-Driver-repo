@@ -8,6 +8,7 @@ TagManager:
   - Border
   - Limit
   - Lines
+  - Street
   layers:
   - Default
   - TransparentFX

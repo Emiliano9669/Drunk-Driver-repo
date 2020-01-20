@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &242503834153109399
+--- !u!1 &9196522631862163441
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 242503834153109395}
-  - component: {fileID: 242503834153109394}
-  - component: {fileID: 242503834153109393}
-  - component: {fileID: 242503834153109392}
+  - component: {fileID: 9196522631862163446}
+  - component: {fileID: 9196522631862163447}
+  - component: {fileID: 9196522631862163440}
+  - component: {fileID: 6527262877307358776}
+  - component: {fileID: 4074751990594526525}
   m_Layer: 0
-  m_Name: CarBot Orange
-  m_TagString: Untagged
+  m_Name: Auto comun verde
+  m_TagString: CarBot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &242503834153109395
+--- !u!4 &9196522631862163446
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242503834153109399}
+  m_GameObject: {fileID: 9196522631862163441}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -1.01, y: 10.05, z: 0}
+  m_LocalPosition: {x: -2.082, y: -1.617, z: -9}
   m_LocalScale: {x: 0.62, y: 0.62, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!212 &242503834153109394
+--- !u!212 &9196522631862163447
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242503834153109399}
+  m_GameObject: {fileID: 9196522631862163441}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: beeba3a64f367bb4196a0cd1d256b5ea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d10ca3534da46804cbca8bece76a1daf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,20 +83,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &242503834153109393
+--- !u!61 &9196522631862163440
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242503834153109399}
+  m_GameObject: {fileID: 9196522631862163441}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011382461, y: 0.022765517}
+  m_Offset: {x: -0.0072701722, y: 0.03635001}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -106,20 +107,41 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9436581, y: 2.1274574}
+  m_Size: {x: 0.88788295, y: 2.1674166}
   m_EdgeRadius: 0
---- !u!114 &242503834153109392
+--- !u!50 &6527262877307358776
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9196522631862163441}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
+--- !u!114 &4074751990594526525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242503834153109399}
+  m_GameObject: {fileID: 9196522631862163441}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83970687f21d0214fb1a2d8def4347db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   direction: {x: 0, y: 1, z: 0}
-  positionYLimit: 0
+  positionYLimit: -11

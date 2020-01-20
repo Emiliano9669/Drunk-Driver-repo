@@ -8,6 +8,7 @@ public class Jugador : MonoBehaviour
 
     public float speedRotation;
     public float maxSpeedMove;
+    public GameObject explosion;
 
     private float angleZ;
     private Vector3 left = Vector3.forward;
@@ -16,7 +17,7 @@ public class Jugador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class Jugador : MonoBehaviour
         else
             KeepGoingLeft_Until(20f);
 
-        transform.Translate(Vector3.left * angleZ/8 * Time.deltaTime,Space.World);
+        transform.Translate(Vector3.left * angleZ / 8 * Time.deltaTime, Space.World);
     }
 
     private void KeepGoingRight_Until(float limit)
@@ -49,4 +50,25 @@ public class Jugador : MonoBehaviour
         angle = (angle > 180) ? angle - 360 : angle;
         return angle;
     }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        string tagName = collision.gameObject.tag;
+        if (tagName == "Border" || tagName == "CarBot")
+        {
+            StartCoroutine(Explosion());
+        }
+    }
+
+    IEnumerator Explosion()
+    {
+        
+        Instantiate(explosion, this.transform.position, this.transform.rotation);
+        yield return new WaitForSeconds(0.5f);
+        ControladorJuego.GameOver();
+        
+    }
+
 }

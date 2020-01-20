@@ -1,0 +1,2 @@
+C:\Users\Emi\Documents\Drunk-Driver-repo\Drunk Driver\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\Emi\Documents\Drunk-Driver-repo\Drunk Driver\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

@@ -43,7 +43,7 @@ public class Levels_CarSpawn : MonoBehaviour
         {
             time = 0;
             GameObject go = Random_Model_Of_ActualLevel();           
-            Vector2 position = Random_Spawn_Location();
+            Vector3 position = Random_Spawn_Location();
             go = Instantiate(go, position, go.transform.rotation);
             Avanzar avanzar = go.GetComponent<Avanzar>();
             avanzar.speed = BookOfLevels[actualLevel].carSpeed;
@@ -52,12 +52,12 @@ public class Levels_CarSpawn : MonoBehaviour
 
     private GameObject Random_Model_Of_ActualLevel()
     {
-        int cantidad_Modelos = BookOfLevels[actualLevel].models.Length - 1;
+        int cantidad_Modelos = BookOfLevels[actualLevel].models.Length;
         int randomValue = Random.Range(0, cantidad_Modelos);
         return BookOfLevels[actualLevel].models[randomValue];
     }
 
-    private Vector2 Random_Spawn_Location()
+    private Vector3 Random_Spawn_Location()
     {
         int random = Random.Range(0, 9);
         return spawn[random].transform.position;
