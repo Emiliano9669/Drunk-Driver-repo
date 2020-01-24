@@ -58,17 +58,17 @@ public class Jugador : MonoBehaviour
         string tagName = collision.gameObject.tag;
         if (tagName == "Border" || tagName == "CarBot")
         {
-            StartCoroutine(Explosion());
+            StartCoroutine(End());
         }
     }
 
-    IEnumerator Explosion()
-    {
-        
+    IEnumerator End()
+    {      
         Instantiate(explosion, this.transform.position, this.transform.rotation);
         yield return new WaitForSeconds(0.5f);
-        ControladorJuego.GameOver();
-        
+        GameObject manager = GameObject.FindGameObjectWithTag("ControladorJuego");
+        ControladorJuego cj = manager.GetComponent<ControladorJuego>();
+        cj.GameOver();    
     }
 
 }

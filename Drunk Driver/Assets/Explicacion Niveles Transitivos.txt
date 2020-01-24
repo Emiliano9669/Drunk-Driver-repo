@@ -1,0 +1,7 @@
+Existen niveles que son considerados como tal pero a su vez tienen la funcion de ser transitivos
+
+el maximo ejemplo facil y corto es:
+cuando pasamos de la ciudad a la carretera (osea pasamos de nivel) se extienden los carriles, entonces es necesario unos segundos de introduccion 
+para que no se sobrepongan los autos en la vereda, para ese tedioso problema lo solucionamos poniendo un nivel transitivo entre el nivel 2 y el 3
+-------------------------------------------------------
+Hasta ahora, lo unico que hay para decir: el nivel 2, es un nivel transitivo

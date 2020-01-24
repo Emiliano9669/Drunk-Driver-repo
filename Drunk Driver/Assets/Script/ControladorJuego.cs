@@ -5,21 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class ControladorJuego : MonoBehaviour
 {
-    public GameObject gameOverInterface;
-    public GameObject introductionInterface;
-    public int[] LevelsLimitsInSeconds;
+    public GameObject gameOverInterface, introductionInterface;
+    public int[] levels_Limits_InSeconds;
+
     [HideInInspector]
     public static int level;
-    
+    [HideInInspector]
+    public static float actualStreetSpeed;
 
-    private static GameObject intrfz;
     private bool leftIntro;
 
     // Start is called before the first frame update
     void Start()
     {
-        intrfz = gameOverInterface;
-        intrfz.SetActive(false);
+        actualStreetSpeed = 3;
+        gameOverInterface.SetActive(false);
         level = 0;
         bool didnt_see_introduction = PlayerPrefs.GetInt("introduction") == 0;
         if (didnt_see_introduction)
@@ -35,10 +35,26 @@ public class ControladorJuego : MonoBehaviour
 
     private void Update()
     {
-        if (leftIntro == false && Input.touchCount > 0)
+        QuarantineCode();
+
+        bool itsTimeToLevelUp = levels_Limits_InSeconds[level] <= TimeManager.globalSceneTime;       
+        if (itsTimeToLevelUp)
+            DoThingsToLevelUp();
+    }
+
+    public void DoThingsToLevelUp()
+    {
+        level++;
+        actualStreetSpeed = actualStreetSpeed + 0.35f;
+    }
+
+
+    public void QuarantineCode() // dont remember what is this but works
+    {
+        bool introAlreadyPassed = (leftIntro == false); //dont know exactly what is this
+        bool screenIsTouched = (Input.touchCount > 0);
+        if (introAlreadyPassed && screenIsTouched)
             StartGame();
-        if (LevelsLimitsInSeconds[level] <= TimeManager.globalSceneTime)
-            level++;
     }
 
     public void StartGame()
@@ -55,10 +71,10 @@ public class ControladorJuego : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    public static void GameOver()
+    public void GameOver()
     {
         Time.timeScale = 0;
-        intrfz.SetActive(true);
+        gameOverInterface.SetActive(true);
     }
 
     private void OnApplicationQuit()

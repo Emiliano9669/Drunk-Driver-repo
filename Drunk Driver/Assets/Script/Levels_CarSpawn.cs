@@ -25,13 +25,13 @@ public class Levels_CarSpawn : MonoBehaviour
     private float time;
     public LevelForCar[] BookOfLevels;
 
-
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
         int actualLevel = ControladorJuego.level;
-        if (time > BookOfLevels[actualLevel].spawnRatio)
+        float interval_InSec = BookOfLevels[actualLevel].spawnRatio;
+        if (time > interval_InSec)
         {
             time = 0;
             DoWork_ToSpawnEnemy();
@@ -44,8 +44,24 @@ public class Levels_CarSpawn : MonoBehaviour
         GameObject go = Random_Model_Of_ActualLevel();
         Vector3 position = Random_Spawn_Location();
         go = Instantiate(go, position, go.transform.rotation);
+
+        SetVelocity(go);
+
+        TryLuck_To_Spawn2Cars();
+    }
+
+
+    private void SetVelocity(GameObject go)
+    {
+        float velocity = BookOfLevels[ControladorJuego.level].carSpeed;
         Avanzar avanzar = go.GetComponent<Avanzar>();
-        avanzar.speed = BookOfLevels[ControladorJuego.level].carSpeed;
+        avanzar.speed = velocity;
+    }
+
+    private void TryLuck_To_Spawn2Cars()
+    {
+        if (WannaSpawnTwoCars())
+            time = (BookOfLevels[ControladorJuego.level].spawnRatio) / 2;
     }
 
     private GameObject Random_Model_Of_ActualLevel()
@@ -64,4 +80,8 @@ public class Levels_CarSpawn : MonoBehaviour
         return BookOfLevels[actualLevel].spawnPoints[random].transform.position;
     }
 
+    private bool WannaSpawnTwoCars()
+    {
+        return Random.Range(0, 5) == 4;
+    }
 }
