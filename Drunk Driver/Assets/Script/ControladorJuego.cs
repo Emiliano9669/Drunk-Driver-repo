@@ -14,10 +14,12 @@ public class ControladorJuego : MonoBehaviour
     public static float actualStreetSpeed;
 
     private bool leftIntro;
+    private MusicManager music;
 
     // Start is called before the first frame update
     void Start()
     {
+        music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
         actualStreetSpeed = 3;
         gameOverInterface.SetActive(false);
         level = 0;
@@ -69,12 +71,14 @@ public class ControladorJuego : MonoBehaviour
         Time.timeScale = 1;
         TimeManager.ResetearTiempo();
         SceneManager.LoadScene("Game");
+        music.NoFilterForAudio();
     }
 
     public void GameOver()
     {
         Time.timeScale = 0;
         gameOverInterface.SetActive(true);
+        music.ActivateLowFrequencyAudio();
     }
 
     private void OnApplicationQuit()
